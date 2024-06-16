@@ -4,3 +4,4 @@ members = [
     "misskey-rs",
     "mfm-rs",
 ]
+resolver = "2"
