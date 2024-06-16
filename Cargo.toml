@@ -1,0 +1,6 @@
+[workspace]
+
+members = [
+    "misskey-rs",
+    "mfm-rs",
+]
