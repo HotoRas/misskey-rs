@@ -21,7 +21,7 @@ typedef std::string Url;
 
 NS_MK NS_MK_JS
 
-    struct _error
+struct _error
 {
   string code;
   string message;
