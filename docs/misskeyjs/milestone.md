@@ -4,7 +4,7 @@ Some components could be missing in pure misskey.
 
 ## Components
 - [x] Error
-- [x] User
+- [ ] User
 - [ ] UserList
 - [ ] Ad
 - [ ] Announcement
