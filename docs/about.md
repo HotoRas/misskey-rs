@@ -23,7 +23,12 @@ Translators should fully understand the TypeAnd and TypeOrs to translate into fu
 ### Rust don't know how to have their structs' parents
 This results the values be defined one by one for each types.
 
-### Rust don't have Null or Undefined but None<T>
-Every Nullables and Undefinedables should become None<T>.
+### Rust don't have Null or Undefined but None
+Every Nullables and Undefinedables should become None.
 
 For example, `name?: string | null` will become `pub mut name: Option<String>`.
+
+> Resolving `Some(T)` is `T` but `None` is `panic!`, so it should be careful.
+
+### Typescript allows types be Function template but not for Rust
+This comes into issue on API creation. Check https://github.com/HotoRas/misskey.rs/issues/1 for details.
