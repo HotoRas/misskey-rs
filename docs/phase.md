@@ -22,22 +22,22 @@ This document will describe more details about this project, especially file sid
     - re-export from types.rs
   - [ ] types.ts > types.rs
     - [x] Error
-    - [ ] User
+    - [x] User
       - [x] UserLite
-      - [ ] UserDetailedNotMeOnly
-      - [ ] MeDetailedOnly
+      - [x] UserDetailedNotMeOnly
+      - [x] MeDetailedOnly
       - [x] UserDetailedNotMe
       - [x] MeDetailed
       - [x] UserDetailed
       - [x] User
-    - [ ] UserList
-    - [ ] Ad
-    - [ ] Announcement
-    - [ ] App
-    - [ ] Note
-    - [ ] NoteReaction
-    - [ ] NoteFavorite
-    - [ ] Notofication (The hardest part)
+    - [x] UserList
+    - [x] Ad
+    - [x] Announcement
+    - [x] App
+    - [x] Note
+    - [x] NoteReaction
+    - [x] NoteFavorite
+    - [x] Notification
     - [ ] Drive
       - [ ] DriveFile
       - [ ] DriveFolder
