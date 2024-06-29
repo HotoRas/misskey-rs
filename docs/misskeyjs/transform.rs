@@ -584,6 +584,7 @@ pub enum Notification {
     Note {
         id: String;
         createdAt: String;
+        type: String = 'note';
         user: UserLite;
         userId: String;
         note: Note;
@@ -591,6 +592,7 @@ pub enum Notification {
     Mention {
         id: string;
         createdAt: string;
+        type: String = 'mention';
         user: UserLite;
         userId: string;
         note: Note;
@@ -598,6 +600,7 @@ pub enum Notification {
     Renote {
         id: String;
         createdAt: String;
+        type: String = 'renote';
         user: UserLite;
         userId: String;
         note: Note;
@@ -605,6 +608,7 @@ pub enum Notification {
     Quote {
         id: String;
         createdAt: String;
+        type: String = 'quote';
         user: UserLite;
         userId: String;
         note: Note;
@@ -612,6 +616,7 @@ pub enum Notification {
     Reaction {
         id: String;
         createdAt: String;
+        type: String = 'reaction';
         user: UserLite;
         userId: String;
         note: Note;
@@ -620,6 +625,7 @@ pub enum Notification {
     PollEnded {
         id: String;
         createdAt: String;
+        type: String = 'pollEnded';
         user: UserLite;
         userId: String;
         note: Note;
@@ -627,28 +633,33 @@ pub enum Notification {
     Follow {
         id: String;
         createdAt: String;
+        type: String = 'follow';
         user: UserLite;
         userId: String;
     },
     FollowRequestAccepted {
         id: String;
         createdAt: String;
+        type: String = 'followRequestAccepted';
         user: UserLite;
         userId: String;
     },
     RoleAssigned {
         id: String;
         createdAt: String;
+        type: String = 'roleAssigned';
         role: Role;
     },
     AchivementEarned {
         id: String;
         createdAt: String;
+        type: String = 'achivementEarned';
         achivement: String;
     },
     App {
         id: String;
         createdAt: String;
+        type: String = 'app';
         body: String;
         header: String;
         icon: String;
@@ -656,18 +667,21 @@ pub enum Notification {
     Reaction_Grouped {
         id: String;
         createdAt: String;
+        type: String = "reaction:grouped";
         note: Note;
         reactions: Vec<NotifyReaction>;
     },
     Renote_Grouped {
         id: String;
         createdAt: String;
+        type: String = "renote:groupped";
         note: Note;
         users: Vec<UserLite>;
     },
     Test {
         id: String;
         createdAt: String;
+        type: String = 'test';
     }
 }
 
@@ -675,3 +689,169 @@ pub struct NotifyReaction {
     pub user: UserLite;
     pub reaction: String;
 }
+
+pub struct DriveFolder {
+    pub id: String;
+    pub createdAt: String; // datetime
+    pub mut name: String;
+    pub mut parentId: Option<String>;
+    pub mut foldersCount: Option<u16>;
+    pub mut filesCount: Option<u16>;
+    pub mut parent: Option<DriveFolder>;
+}
+
+pub struct Following {
+    pub id: String;
+    pub createdAt: String; // datetime
+    pub mut followeeId: String;
+    pub mut followerId: String;
+    pub mut followee: Option<UserDetailedNotMe>;
+    pub mut follower: Option<UserDetailedNotMe>;
+}
+
+pub struct Muting {
+    pub id: String;
+    pub createdAt: String;
+    pub mut expiresAt: String;
+    pub muteeId: String;
+    pub mut mutee: UserDetailedNotMe;
+}
+
+pub struct RenoteMuting {
+    pub id: String;
+    pub createdAt: String;
+    pub muteeId: String;
+    pub mut mutee: UserDetailedNotMe;
+}
+
+pub struct blocking {
+    pub id: String;
+    pub createdAt: String;
+    pub blockeeId: String;
+    pub mut blockee: UserDetailedNotMe;
+}
+
+pub struct Hashtag {
+    pub tag: String;
+    pub mut mentionedUsersCount: u32;
+    pub mut mentionedLocalUsersCount: u32;
+    pub mut mentionedRemoteUsersCount: u32;
+    pub mut attachedUsersCount: u32;
+    pub mut attachedLocalUsersCount: u32;
+    pub mut attachedRemoteUsersCount: u32;
+}
+
+pub struct InviteCode {
+    pub id: String;
+    pub code: String;
+    pub expiresAt: Option<String>; // @nullable datetime
+    pub createdAt: String; // datetime
+    pub createdBy: Option<UserLite>;
+    pub mut usedBy: Option<UserLite>;
+    pub mut UsedAt: Option<String>; // datetime
+    pub mut used: bool;
+}
+
+pub struct Page {
+    pub id: String;
+    pub createdAt: String; // datetime
+    pub mut updatedAt: String; // datetime
+    pub userId: String;
+    pub mut user: UserLite;
+    pub mut content: Vec<PageBlock>;
+    pub mut variables: Vec<HashMap<String, {UNKNOWN}>>;
+
+    pub mut title: String;
+    pub mut name: String;
+    pub mut summary: Option<String>;
+    pub mut hideTitleWhenPinned: bool;
+
+    pub mut alignCenter: bool;
+    pub mut font: String;
+    pub mut script: String;
+    pub mut eyeCatchingImageId: Option<String>;
+    pub mut eyeCatchingImage: Option<DriveFile>;
+    pub mut attachedFile: Vec<DriveFile>;
+
+    pub mut likedCount: u16;
+    pub mut isLiked: Option<bool>;
+}
+
+pub enum PageBlock {
+    Text {
+        id: String;
+        type: String = 'text';
+        text: String;
+    },
+    Section {
+        id: String;
+        type: String = 'sextion';
+        title: String;
+        children: Vec<PageBlock>;
+    },
+    Image {
+        id: String;
+        type: String = 'image';
+        fileId: Option<String>;
+    },
+    Note {
+        id: String;
+        type: String = 'note';
+        detailed: bool;
+        note: Option<String>;
+    }
+}
+
+pub struct Channel {
+    pub id: String;
+    pub createdAt: String; // datetime
+    pub mut lastNotedAt: Option<String>; // @nullable datetime
+    pub mut name: String;
+    pub mut description: Option<String>;
+    pub mut bannerUrl: Option<UrlStr>;
+    pub mut pinnedNoteIds: Vec<String>;
+    pub mut color: String;
+    pub mut isArchived: bool;
+    pub mut usersCount: u16;
+    pub mut notesCount: u32;
+    pub mut isSensitive: bool;
+    pub mut allowRenoteToExternal: bool;
+    pub mut isFollowing: Option<bool>;
+    pub mut isFavorited: Option<bool>;
+    pub mut pinnedNotes: Option<Vec<Note>>;
+}
+
+pub struct QueueCount {
+    // this is "copy"
+    pub mut waiting: u32;
+    pub mut active: u32;
+    pub mut completed: u32;
+    pub mut failed: u32;
+    pub mut delayed: u32;
+}
+
+pub struct Antenna {
+    pub id: String;
+    pub createdAt: String; // datetime
+    pub mut name: String;
+    pub mut keywords: Vec<Vec<String>>;
+    pub mut excludeKeywords: Vec<Vec<String>>;
+    pub mut src: AntennaSrc;
+    pub mut userListId: Option<String>;
+    pub mut users: Vec<String>;
+    pub mut caseSensitive: bool;
+    pub mut localOnly: bool;
+    pub mut excludeBots: bool;
+    pub mut withReplies: bool;
+    pub mut withFile: bool;
+    pub mut isActive: bool;
+    pub mut hasUnreadNote: bool;
+    pub mut notify: bool;
+}
+
+pub enum AntennaSrc {
+    hone, all, users, list, users_blacklist,
+}
+
+//TODO start back from Clip
+//@src https://github.com/misskey-dev/misskey/blob/develop/packages/misskey-js/src/autogen/types.ts
