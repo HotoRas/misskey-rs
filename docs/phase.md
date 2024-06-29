@@ -38,32 +38,32 @@ This document will describe more details about this project, especially file sid
     - [x] NoteReaction
     - [x] NoteFavorite
     - [x] Notification
-    - [ ] Drive
-      - [ ] DriveFile
-      - [ ] DriveFolder
-    - [ ] Following and the Request
-      - [ ] Following
-      - [ ] FollowingRequest
-    - [ ] Mute and Block
-      - [ ] Muting
-      - [ ] RenoteMuting
-      - [ ] Blocking
-    - [ ] #hashtag
-    - [ ] InviteCode
-    - [ ] Page
-      - [ ] Page
-      - [ ] PageBlock
-    - [ ] Channel
-    - [ ] Queue
-    - [ ] Antenna
-    - [ ] Clip
-    - [ ] Federated Instance/Server
-    - [ ] Gallery
-    - [ ] Emoji
-    - [ ] Flash
-    - [ ] SignIn
-    - [ ] Role and Conditions
-    - [ ] Role Policies
+    - [x] Drive
+      - [x] DriveFile
+      - [x] DriveFolder
+    - [x] Following and the Request
+      - [x] Following
+      - [x] FollowingRequest
+    - [x] Mute and Block
+      - [x] Muting
+      - [x] RenoteMuting
+      - [x] Blocking
+    - [x] #hashtag
+    - [x] InviteCode
+    - [x] Page
+      - [x] Page
+      - [x] PageBlock
+    - [x] Channel
+    - [x] Queue
+    - [x] Antenna
+    - [x] Clip
+    - [x] Federated Instance/Server
+    - [x] Gallery
+    - [x] Emoji
+    - [x] Flash
+    - [x] SignIn
+    - [x] Role and Conditions
+    - [x] Role Policies
     - [ ] Reversi
     - [ ] Metadata
     - [ ] Abuse User Report

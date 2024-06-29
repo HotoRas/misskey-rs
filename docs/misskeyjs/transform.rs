@@ -853,5 +853,219 @@ pub enum AntennaSrc {
     hone, all, users, list, users_blacklist,
 }
 
-//TODO start back from Clip
-//@src https://github.com/misskey-dev/misskey/blob/develop/packages/misskey-js/src/autogen/types.ts
+pub struct Clip {
+    pub id: String;
+    pub createdAt: String; // datetime
+    pub mut lastClippedAt: Option<String>; // @nullable datetime
+    pub userId: String;
+    pub mut user: UserLite;
+    pub mut name: String;
+    pub mut description: Option<String>;
+    pub mut isPublic: bool;
+    pub mut favoritedCount: u16;
+    pub mut isFavorited: Option<bool>;
+    pub mut notesCount: Option<u16>;
+}
+
+pub enum FederationSuspensionState {
+    none, manuallySuspended, goneSuspended, autoSuspendedForNotResponding,
+}
+
+pub struct FederationInstance {
+    pub id: String;
+    pub firstRecievedAt: String; // datetime
+    pub host: UrlStr;
+    pub mut usersCount: u16;
+    pub mut notesCount: u32;
+    pub mut followingCount: u16;
+    pub mut followersCount: u16;
+
+    pub mut isNotResponding: bool;
+    pub mut isSuspended: bool;
+    pub mut suspensionState: FederationSuspensionState;
+
+    pub mut isBlocked: bool;
+    pub mut softwareName: Option<String>;
+    pub mut softwareVersion: Option<String>;
+    pub mut openRegistration: Option<bool>;
+
+    pub mut name: Option<String>;
+    pub mut description: Option<String>;
+    pub mut maintainerName: Option<String>;
+    pub mut maintainerEmail: Option<String>;
+    pub mut isSilenced: bool;
+    pub mut iconUrl: Option<UrlStr>;
+    pub mut faviconUrl: Option<UrlStr>;
+    pub mut themeColor: Option<String>;
+    pub mut infoUpdatedAt: Option<String>; // @nullable datetime
+    pub mut latestRequestRecievedAt: Option<String>; // @nullable datetime
+    pub mut moderationNote: Option<String>;
+}
+
+pub struct GalleryPost {
+    pub id: String;
+    pub createdAt: String; // datetime
+    pub mut updatedAt: String; // datetime
+    pub userId: String;
+    pub mut user: UserLite;
+    pub mut title: String;
+    pub mut description: Option<String>;
+    pub mut fileIds: Option<Vec<String>>;
+    pub mut files: Option<Vec<DriveFile>>;
+    pub mut tags: Option<Vec<String>>;
+    pub mut isSensitive: bool;
+    pub mut likedCount: u16;
+    pub mut isLiked: Option<bool>;
+}
+
+pub struct EmojiSimple {
+    pub mut aliases: Vec<String>;
+    pub mut name: String;
+    pub mut category: Option<String>;
+    pub mut url: UrlStr;
+    pub mut localOnly: Option<bool>;
+    pub mut isSensitive: Option<bool>;
+    pub mut roleIdsThatCanBeUsedThisEmojiAsReaction: Option<Vec<String>>;
+}
+
+pub struct EmojiDetailed {
+    pub id: String;
+    pub mut aliases: Vec<String>;
+    pub mut name: String;
+    pub mut category: Option<String>;
+
+    pub host: Option<String>;
+    pub mut url: UrlStr;
+    pub mut license: Option<String>;
+
+    pub mut isSensitive: bool;
+    pub mut localOnly: bool;
+    pub mut roleIdsThatCanBeUsedThisEmojiAsReaction: Vec<String>;
+}
+
+pub struct Flash {
+    pub id: String;
+    pub createdAt: String;
+    pub mut updatedAt: String;
+    pub userId: String;
+    pub mut user: UserLite;
+    pub mut title: String;
+    pub mut summary: String;
+    pub mut script: String;
+    pub mut likedCount: Option<u16>;
+    pub mut isLiked: Option<bool>;
+}
+
+pub struct Signin {
+    pub id: String;
+    pub createdAt: String;
+    pub ip: String;
+    pub headers: HashMap<String, {{UNKNOWN}}>;
+    pub success: bool;
+}
+
+pub enum RoleCondTypes {
+    and(RoleCondFormulaValue), or(RoleCondFormulaValue), not(RoleCondFormulaValue),
+    isLocal, isRemote,
+    isSuspended, isLocked, isBot, isCat, isExplorable,
+    roleAssignedTo(String),
+    createdLessThan(u64), createdMoreThan(u64),
+    followersLessThanOrEq(u32), followersMoreThanOrEq(u32),
+    followingLessThanOrEq(u32), followingMoreThanOrEq(u32),
+    notesLessThanOrEq(u32), notesMoreThanOrEq(u32),
+}
+
+pub struct RoleCondFormulaValue {
+    pub id: String;
+    pub mut type: RoleCondTypes;
+}
+
+pub struct RoleLite {
+    pub id: String;
+    pub mut name: String;
+    pub mut color: Option<String>;
+    pub mut iconUrl: Option<UrlStr>;
+    pub mut description: String;
+    pub mut isModerator: bool;
+    pub mut isAdministrator: bool;
+    pub mut displayOrder: u8;
+}
+
+pub struct Role {
+    pub id: String;
+    pub mut name: String;
+    pub mut color: Option<String>;
+    pub mut iconUrl: Option<UrlStr>;
+    pub mut description: String;
+    pub mut isModerator: bool;
+    pub mut isAdministrator: bool;
+    pub mut displayOrder: u8;
+
+    pub createdAt: String; // datetime
+    pub mut updatedAt: String; // datetime
+    pub mut target: RoleTarget;
+    pub mut condFormula: RoleCondFormulaValue;
+
+    pub mut isPublic: bool;
+    pub mut isExplorable: bool;
+    pub mut asBadge: bool;
+    pub mut canEditMembersByModerator: bool;
+
+    pub mut policies: Vec<HashMap<String, RolePoliciesTiny>>;
+    pub mut usersCount: u16;
+}
+
+pub enum RoleTarget { manual, conditional, }
+
+pub enum NumberOrBool {
+    number(u32), bool(bool),
+}
+
+pub struct RolePoliciesTiny {
+    pub value: Option<NumberOrBool>;
+    pub mut priority: Option<u8>;
+    pub mut useDefault: Option<bool>;
+}
+
+pub struct RolePolicies {
+    // this is "copy"
+    pub mut ltlAvaliable: bool;
+    pub mut gtlAvaliable: bool;
+    pub mut canPublicNote: bool;
+    pub mut mentionLimit: bool;
+    pub mut canInvite: bool;
+    pub mut inviteLimit: u64;
+    pub mut inviteLimitCycle: u64; // unixtime
+    pub mut inviteExpirationTime: u64; // unixtime
+
+    pub mut canManageCustomEmojis: bool;
+    pub mut canManageAvatarDecorations: bool;
+    pub mut canSearchNotes: bool;
+    pub mut canUseTranslator: bool;
+    pub mut canHideAds: bool;
+
+    pub mut driveCapacityMb: u32;
+    pub mut alwaysMarkNsfw: bool;
+    pub mut pinLimit: u8;
+    pub mut antennaLimit: u16;
+    pub mut wordMuteLimit: u32;
+    pub mut webhookLimit: u32;
+    pub mut clipLimit: u32;
+
+    pub mut noteEachClipsLimit: u32;
+    pub mut userListLimit: u8;
+    pub mut userEachUserListsLimit: u16;
+    
+    pub mut rateLimitFactor: u8; // pcnt
+    pub mut avatarDecorationLimit: u8; // more than 200 is it "legal" anyways?
+}
+
+//TODO start back from Reversi
+//@src https://github.com/misskey-dev/misskey/blob/develop/packages/misskey-js/src/autogen/types.ts#L4800
+
+// nevers
+pub type responses: Never;
+pub type parameters: Never;
+pub type requestBodies: Never;
+pub type headers: Never;
+pub type pathItems: Never;
