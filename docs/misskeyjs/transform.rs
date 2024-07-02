@@ -30,12 +30,7 @@ pub struct Instance {
 
 pub type Emojis = HashMap<String, String>;
 
-pub enum OnlineStatus {
-    UNKNOWN,
-    ONLINE,
-    ACTIVE,
-    OFFLINE,
-}
+pub enum OnlineStatus { unknown, online, active, offline, }
 
 pub struct BadgeRole {
     pub mut name: String;
@@ -69,16 +64,9 @@ pub struct UserFields {
     pub mut value: String;
 }
 
-pub struct Visibility {
-    PUBLIC,
-    FOLLOWERS,
-    PRIVATE,
-}
+pub struct Visibility { public, followers, private, }
 
-pub struct NotifyConf {
-    NORMAL,
-    NONE,
-}
+pub struct NotifyConf { normal, none, }
 
 pub struct UserDetailedNotMeOnly {
     pub mut url: Option<UrlStr>;
@@ -218,30 +206,16 @@ pub struct UserDetailedNotMe {
 
 pub type UserDetailed = UserDetailedNotMe;
 
-pub enum TwoFactorBackupStock {
-    FULL,
-    PARTIAL,
-    NONE,
-}
-
-pub enum NotifyFrom {
-    ALL,
-    FOLLOWING,
-    FOLLOWER,
-    MUTURALFOLLOW,
-    FOLLOWINGORFOLLOWER,
-    NEVER,
-    LIST(String),
-}
+pub enum TwoFactorBackupStock { full, partial, none, }
 
 pub enum NotifyFromOneOf {
-    ALL,
-    FOLLOWING,
-    FOLLOWER,
-    MUTUALFOLLOW,
-    FOLLOWINGORFOLLOWER,
-    NEVER,
-    LIST(String),
+    all,
+    following,
+    follower,
+    muturalFollow,
+    followingOrFollower,
+    never,
+    list(String),
 }
 
 pub struct NotificationRecieveConf {
@@ -450,18 +424,9 @@ pub struct Ad {
     pub mut dayOfWeek: u8;
 }
 
-pub enum AnnouncementIcon {
-    INFO,
-    WARNING,
-    ERROR,
-    SUCCESS,
-}
+pub enum AnnouncementIcon { info, warning, error, success, }
 
-pub enum AnnouncementDisplay {
-    DIALOG,
-    NORMAL,
-    BANNER,
-}
+pub enum AnnouncementDisplay { dialog, normal, banner, }
 
 pub struct Announcement {
     pub id: String;
@@ -487,12 +452,7 @@ pub struct App {
     pub mut isAuthorized: Option<bool>;
 }
 
-pub enum NoteVisibility {
-    PUBLIC,
-    HOME,
-    FOLLOWERS,
-    SPECIFIED,
-}
+pub enum NoteVisibility { public, home, followers, specified, }
 
 pub struct NotePollChoice {
     pub mut isVoted: bool;
@@ -581,7 +541,7 @@ pub struct NoteFavorite {
 }
 
 pub enum Notification {
-    Note {
+    note {
         id: String;
         createdAt: String;
         type: String = 'note';
@@ -589,7 +549,7 @@ pub enum Notification {
         userId: String;
         note: Note;
     },
-    Mention {
+    mention {
         id: string;
         createdAt: string;
         type: String = 'mention';
@@ -597,7 +557,7 @@ pub enum Notification {
         userId: string;
         note: Note;
     },
-    Renote {
+    renote {
         id: String;
         createdAt: String;
         type: String = 'renote';
@@ -605,7 +565,7 @@ pub enum Notification {
         userId: String;
         note: Note;
     },
-    Quote {
+    quote {
         id: String;
         createdAt: String;
         type: String = 'quote';
@@ -613,7 +573,7 @@ pub enum Notification {
         userId: String;
         note: Note;
     },
-    Reaction {
+    reaction {
         id: String;
         createdAt: String;
         type: String = 'reaction';
@@ -622,7 +582,7 @@ pub enum Notification {
         note: Note;
         reaction: String;
     },
-    PollEnded {
+    pollEnded {
         id: String;
         createdAt: String;
         type: String = 'pollEnded';
@@ -630,33 +590,33 @@ pub enum Notification {
         userId: String;
         note: Note;
     },
-    Follow {
+    follow {
         id: String;
         createdAt: String;
         type: String = 'follow';
         user: UserLite;
         userId: String;
     },
-    FollowRequestAccepted {
+    followRequestAccepted {
         id: String;
         createdAt: String;
         type: String = 'followRequestAccepted';
         user: UserLite;
         userId: String;
     },
-    RoleAssigned {
+    roleAssigned {
         id: String;
         createdAt: String;
         type: String = 'roleAssigned';
         role: Role;
     },
-    AchivementEarned {
+    achivementEarned {
         id: String;
         createdAt: String;
         type: String = 'achivementEarned';
         achivement: String;
     },
-    App {
+    app {
         id: String;
         createdAt: String;
         type: String = 'app';
@@ -664,21 +624,21 @@ pub enum Notification {
         header: String;
         icon: String;
     },
-    Reaction_Grouped {
+    reaction_Grouped {
         id: String;
         createdAt: String;
         type: String = "reaction:grouped";
         note: Note;
         reactions: Vec<NotifyReaction>;
     },
-    Renote_Grouped {
+    renote_Grouped {
         id: String;
         createdAt: String;
         type: String = "renote:groupped";
         note: Note;
         users: Vec<UserLite>;
     },
-    Test {
+    test {
         id: String;
         createdAt: String;
         type: String = 'test';
@@ -778,23 +738,23 @@ pub struct Page {
 }
 
 pub enum PageBlock {
-    Text {
+    text {
         id: String;
         type: String = 'text';
         text: String;
     },
-    Section {
+    section {
         id: String;
         type: String = 'sextion';
         title: String;
         children: Vec<PageBlock>;
     },
-    Image {
+    image {
         id: String;
         type: String = 'image';
         fileId: Option<String>;
     },
-    Note {
+    note {
         id: String;
         type: String = 'note';
         detailed: bool;
@@ -850,7 +810,7 @@ pub struct Antenna {
 }
 
 pub enum AntennaSrc {
-    hone, all, users, list, users_blacklist,
+    home, all, users, list, users_blacklist,
 }
 
 pub struct Clip {
