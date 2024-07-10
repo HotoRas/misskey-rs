@@ -1,26 +1,27 @@
+#![feature(never_type)]
+#![allow(non_snake_case, non_camel_case_types)]
+
 mod api_types;
 pub use api_types::Endpoints;
 
 mod streaming;
-pub use streaming::{ Stream, Connection as ChannelConnection };
+
+pub use streaming::{Connection as ChannelConnection, Stream};
 
 mod streaming_types;
 pub use streaming_types::Channels;
 
-mod acct;
+pub mod acct;
 pub use acct::Acct;
 
 mod consts;
 pub use consts::{
-    permissions, 
-    notificationTypes, 
-    noteVisibilities, 
-    mutedNoteReasons, 
-    followingVisibilities, 
-    followersVisibilities, 
-    moderationLogTypes,
+    followersVisibilities, followingVisibilities, moderationLogTypes, mutedNoteReasons,
+    noteVisibilities, notificationTypes, permissions,
 };
 
 pub mod api;
 pub mod entities;
-pub mod acct;
+
+// temp
+mod autogen;
