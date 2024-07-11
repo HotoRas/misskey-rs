@@ -15,12 +15,12 @@ This document will describe more details about this project, especially file sid
   - [ ] apiClientJSDoc.ts > apiClientJSDoc.rs
   - [ ] endpoint.ts > endpoint.rs
   - [ ] entities.ts > entities.rs
-    - re-export from types.rs
-    - [ ] EmptyRequest `Option<std::collections::HashMap<String, {Unknown}>>`
+    - re-export from types
+    - [ ] EmptyRequest `Option<std::collections::HashMap<String, !>>`
     - [ ] EmptyResponse `EmptyRequest`
   - [ ] models.ts > models.rs
-    - re-export from types.rs
-  - [ ] types.ts > types.rs
+    - re-export from types
+  - [x] types.ts: Types > MkTypes.rs
     - [x] Error
     - [x] User
       - [x] UserLite
@@ -64,8 +64,8 @@ This document will describe more details about this project, especially file sid
     - [x] SignIn
     - [x] Role and Conditions
     - [x] Role Policies
-    - [ ] Reversi
-    - [ ] Metadata
-    - [ ] Abuse User Report
-    - [ ] Moderation Log
-    - [ ] The Nevers (Rust have `Option<T>::Never`)
+    - [x] Reversi
+    - [x] Metadata
+    - [x] Abuse User Report
+    - [x] Moderation Log
+    - [x] The Nevers
