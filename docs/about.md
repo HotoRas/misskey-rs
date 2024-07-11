@@ -32,3 +32,6 @@ For example, `name?: string | null` will become `pub mut name: Option<String>`.
 
 ### Typescript allows types be Function template but not for Rust
 This comes into issue on API creation. Check https://github.com/HotoRas/misskey.rs/issues/1 for details.
+
+### Never type (`type !`) is experimental on Rust since 2018 until today
+This limits this code to be only-on-Nightly. This can be changed if every issue is fixed up and it being promoted to Beta.
