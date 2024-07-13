@@ -5,7 +5,6 @@ mod api_types;
 pub use api_types::Endpoints;
 
 mod streaming;
-
 pub use streaming::{Connection as ChannelConnection, Stream};
 
 mod streaming_types;
