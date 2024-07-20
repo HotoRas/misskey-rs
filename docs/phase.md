@@ -15,12 +15,18 @@ This document will describe more details about this project, especially file sid
   - [ ] apiClientJSDoc.ts > apiClientJSDoc.rs
   - [ ] endpoint.ts > endpoint.rs
   - [ ] entities.ts > entities.rs
-    - re-export from types
+    - re-export from MkTypes.rs
     - [ ] EmptyRequest `Option<std::collections::HashMap<String, !>>`
     - [ ] EmptyResponse `EmptyRequest`
   - [ ] models.ts > models.rs
     - re-export from types
-  - [x] types.ts: Types > MkTypes.rs
+  - [ ] types.ts: paths > MkEndpointPath.rs `3638L`
+  - [ ] types.ts: operations > MkApiOperation.rs `22531L` (what?)
+  - [ ] types.ts: Orphans
+    - [ ] webhooks `std::collections::HashMap<String, !>`
+    - [ ] $defs `std::collections::HashMap<String, !>`
+    - [ ] external `std::collections::HashMap<string, !>`
+  - [x] types.ts: components > MkTypes.rs
     - [x] Error
     - [x] User
       - [x] UserLite
@@ -54,18 +60,32 @@ This document will describe more details about this project, especially file sid
       - [x] Page
       - [x] PageBlock
     - [x] Channel
-    - [x] Queue
+    - [x] Queue Count
     - [x] Antenna
     - [x] Clip
     - [x] Federated Instance/Server
     - [x] Gallery
     - [x] Emoji
+      - [x] EmojiSimple
+      - [x] EmojiDetailed
     - [x] Flash
     - [x] SignIn
     - [x] Role and Conditions
-    - [x] Role Policies
+      - [x] RoleCondFormula...
+      - [x] RoleLite
+      - [x] Role
+      - [x] RolePolicies
     - [x] Reversi
+      - [x] Lite
+      - [x] detailed
     - [x] Metadata
+      - [x] MetaLite
+      - [x] MetaDetailedOnly
+      - [x] MetaDetailed
+    - [x] SystemWebhook
     - [x] Abuse User Report
-    - [x] Moderation Log
     - [x] The Nevers
+      - [x] responses
+      - [x] parameters
+      - [x] requestBodies
+      - [x] pathItems
